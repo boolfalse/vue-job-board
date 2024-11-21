@@ -9,6 +9,7 @@ const items = ref([
   { id: 2, name: "Banana" },
   { id: 3, name: "Cherry" },
 ]);
+const newItemName = ref('');
 const link = reactive({
   url: "https://vuejs.org/guide/quick-start.html",
   title: "Vue.js",
@@ -24,6 +25,24 @@ const setRandomStatus = () => {
     }
   }
 };
+
+const addItem = () => {
+  if (newItemName.value.trim() === '') {
+    alert('Please enter an item name!');
+    return;
+  }
+
+  items.value.push({
+    id: items.value.length + 1,
+    name: newItemName.value,
+  });
+
+  newItemName.value = '';
+};
+
+const deleteItem = (index) => {
+  items.value.splice(index, 1);
+};
 </script>
 
 <template>
@@ -35,18 +54,29 @@ const setRandomStatus = () => {
   <hr>
 
   <h3>Change Status:</h3>
-<!--  <button v-on:click="setRandomStatus">Set Random Status</button>-->
   <button @click="setRandomStatus">Set Random Status</button>
 
   <hr>
 
+  <form @submit.prevent="addItem">
+    <label for="item">Item:</label>
+    <input type="text"
+           placeholder="Enter item name"
+           id="item"
+           v-model="newItemName"
+    />
+    <button type="submit">Add Item</button>
+  </form>
+
   <h3>Items:</h3>
   <ul>
-    <li v-for="item in items" :key="item.id">{{ item.name }}</li>
+    <li v-for="(item, index) in items" :key="item.id">
+      <button @click="deleteItem(index)">X</button>
+      <span>{{ item.name }}</span>
+    </li>
   </ul>
 
   <hr>
   <h3>Link</h3>
-<!--  <a v-bind:href="link.url" v-bind:title="link.title" target="_blank">{{ link.title }}</a>-->
   <a :href="link.url" :title="link.title" target="_blank">{{ link.title }}</a>
 </template>
