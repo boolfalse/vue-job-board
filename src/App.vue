@@ -1,41 +1,29 @@
 
-<script>
+<script setup>
 import { ref, reactive } from 'vue';
 
-export default {
-  setup() {
-    const message = "Working with the Vue 3 Composition API (long version)";
-    const status = ref('active');
-    const items = ref([
-      { id: 1, name: "Apple" },
-      { id: 2, name: "Banana" },
-      { id: 3, name: "Cherry" },
-    ]);
-    const link = reactive({
-      url: "https://vuejs.org/guide/quick-start.html",
-      title: "Vue.js",
-    });
+const message = "Working with the Vue 3 Composition API (short version)";
+const status = ref('active');
+const items = ref([
+  { id: 1, name: "Apple" },
+  { id: 2, name: "Banana" },
+  { id: 3, name: "Cherry" },
+]);
+const link = reactive({
+  url: "https://vuejs.org/guide/quick-start.html",
+  title: "Vue.js",
+});
 
-    const setRandomStatus = () => {
-      const statuses = ['active', 'pending', 'inactive'];
-      while (true) {
-        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-        if (randomStatus !== status.value) {
-          status.value = randomStatus;
-          break;
-        }
-      }
-    };
-
-    return {
-      message,
-      status,
-      items,
-      link,
-      setRandomStatus,
-    };
-  },
-}
+const setRandomStatus = () => {
+  const statuses = ['active', 'pending', 'inactive'];
+  while (true) {
+    const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+    if (randomStatus !== status.value) {
+      status.value = randomStatus;
+      break;
+    }
+  }
+};
 </script>
 
 <template>
