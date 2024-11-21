@@ -27,8 +27,13 @@ npm run build
 
 #### Resources:
 
-- Official Docs: [Vue.js](https://vuejs.org/)
 - YouTube video: [Vue.js Crash Course 2024](https://www.youtube.com/watch?v=VeNfHj6MhgA)
 - Project on GitHub: [Vue.js crash course files. Vue Jobs project.](https://github.com/bradtraversy/vue-crash-2024)
 - Blogpost on TraversyMedia: [Vue.js Crash Course (Full 2024)](https://www.traversymedia.com/blog/vue-crash-course)
+
+
+- Vue.js [Docs](https://vuejs.org/)
+- [Tailwind CSS](https://v2.tailwindcss.com/docs/guides/vue-3-vite) with Vue 3 and Vite
+
+
 - Author: [BoolFalse](https://boolfalse.com/)
