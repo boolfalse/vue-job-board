@@ -1,14 +1,10 @@
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 
 const message = "Working with the Vue 3 Composition API (short version)";
 const status = ref('active');
-const items = ref([
-  { id: 1, name: "Apple" },
-  { id: 2, name: "Banana" },
-  { id: 3, name: "Cherry" },
-]);
+const items = ref([]);
 const newItemName = ref('');
 const link = reactive({
   url: "https://vuejs.org/guide/quick-start.html",
@@ -25,7 +21,6 @@ const setRandomStatus = () => {
     }
   }
 };
-
 const addItem = () => {
   if (newItemName.value.trim() === '') {
     alert('Please enter an item name!');
@@ -39,10 +34,22 @@ const addItem = () => {
 
   newItemName.value = '';
 };
-
 const deleteItem = (index) => {
   items.value.splice(index, 1);
 };
+
+onMounted(async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
+    const data = await response.json();
+    items.value = data.map((item) => ({
+      id: item.id,
+      name: item.title,
+    }));
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 </script>
 
 <template>
