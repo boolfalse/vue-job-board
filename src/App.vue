@@ -1,36 +1,40 @@
 
 <script>
+import { ref, reactive } from 'vue';
+
 export default {
-  name: "App",
-  data() {
-    return {
-      message: "Working with the Options API",
-      status: "active",
-      items: [
-        { id: 1, name: "Apple" },
-        { id: 2, name: "Banana" },
-        { id: 3, name: "Cherry" },
-      ],
-      link: {
-        url: "https://vuejs.org/guide/quick-start.html",
-        title: "Vue.js",
-      },
-    }
-  },
-  methods: {
-    getNewStatus() {
-      return Math.random() > 0.33 ? "active" : Math.random() > 0.66 ? "pending" : "inactive";
-    },
-    setRandomStatus() {
+  setup() {
+    const message = "Working with the Vue 3 Composition API (long version)";
+    const status = ref('active');
+    const items = ref([
+      { id: 1, name: "Apple" },
+      { id: 2, name: "Banana" },
+      { id: 3, name: "Cherry" },
+    ]);
+    const link = reactive({
+      url: "https://vuejs.org/guide/quick-start.html",
+      title: "Vue.js",
+    });
+
+    const setRandomStatus = () => {
+      const statuses = ['active', 'pending', 'inactive'];
       while (true) {
-        const randomStatus = this.getNewStatus();
-        if (randomStatus !== this.status) {
-          this.status = randomStatus;
+        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+        if (randomStatus !== status.value) {
+          status.value = randomStatus;
           break;
         }
       }
-    }
-  }
+    };
+
+    return {
+      message,
+      status,
+      items,
+      link,
+      setRandomStatus,
+    };
+  },
 }
 </script>
 
