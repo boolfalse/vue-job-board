@@ -3,6 +3,28 @@
 
 3 Hour crash course of the Vue.js framework. You will learn all the fundamentals including components, directives, lifecycle, events and much more.
 
+#### Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+#### Project Setup
+
+```sh
+npm install
+```
+
+#### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+#### Compile and Minify for Production
+
+```sh
+npm run build
+```
+
 #### Resources:
 
 - Official Docs: [Vue.js](https://vuejs.org/)
