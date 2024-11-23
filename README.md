@@ -25,15 +25,21 @@ npm run dev
 npm run build
 ```
 
-#### Resources:
+#### Project Resources:
 
 - YouTube video: [Vue.js Crash Course 2024](https://www.youtube.com/watch?v=VeNfHj6MhgA)
 - Project on GitHub: [Vue.js crash course files. Vue Jobs project.](https://github.com/bradtraversy/vue-crash-2024)
 - Blogpost on TraversyMedia: [Vue.js Crash Course (Full 2024)](https://www.traversymedia.com/blog/vue-crash-course)
 
 
+#### Useful Resources:
+
 - Vue.js [Docs](https://vuejs.org/)
+- [Install Tailwind CSS with Vite](https://tailwindcss.com/docs/guides/vite)
 - [Tailwind CSS](https://v2.tailwindcss.com/docs/guides/vue-3-vite) with Vue 3 and Vite
+- PrimeVue icons from [PrimeIcons](https://github.com/primefaces/primeicons?tab=readme-ov-file)
 
 
-- Author: [BoolFalse](https://boolfalse.com/)
+#### Author:
+
+- Website: [BoolFalse](https://boolfalse.com/)

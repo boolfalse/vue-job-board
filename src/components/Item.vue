@@ -44,6 +44,7 @@ const truncatedDescription = computed(() => {
 
       <div class="flex flex-col lg:flex-row justify-between mb-4">
         <div class="text-orange-700 mb-3">
+          <i class="pi pi-tag text-orange-700"></i>
           {{ item.category }}
         </div>
         <a :href="`/items/${item.id}`" class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
