@@ -1,4 +1,8 @@
 
+<script setup>
+import Navbar from "@/components/Navbar.vue";
+</script>
+
 <template>
-  <h2 class="text-2xl">Items</h2>
+  <Navbar />
 </template>
