@@ -10,12 +10,16 @@ import Card from '@/components/Card.vue';
         <Card>
           <h2 class="text-2xl font-bold">Card 1</h2>
           <p class="mt-2 mb-4">Card 1 description</p>
-          <a href="/items" class="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700">Browse Items</a>
+          <RouterLink to="/items" class="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700">
+            Browse Items
+          </RouterLink>
         </Card>
         <Card bg="bg-green-100">
           <h2 class="text-2xl font-bold">Card 2</h2>
           <p class="mt-2 mb-4">Card 2 description</p>
-          <a href="/items/add" class="inline-block bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600">Add Item</a>
+          <RouterLink to="/items/add" class="inline-block bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600">
+            Add Item
+          </RouterLink>
         </Card>
       </div>
     </div>
