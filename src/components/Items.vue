@@ -1,7 +1,8 @@
 
 <script setup>
 import Item from './Item.vue';
-import { defineProps, ref } from 'vue';
+import {defineProps, onMounted, ref} from 'vue';
+import axios from "axios";
 
 defineProps({
   limit: Number,
@@ -11,13 +12,16 @@ defineProps({
   },
 });
 
-const items = ref([
-  { id: 1, title: "Item 1", description: "This is item 1", category: "Category 1" },
-  { id: 2, title: "Item 2", description: "This is item 2, if want to read more click on more button", category: "Category 2" },
-  { id: 3, title: "Item 3", description: "This is item 3", category: "Category 3" },
-  { id: 4, title: "Item 4", description: "This is item 4", category: "Category 4" },
-  { id: 5, title: "Item 5", description: "This is item 5, if want to read more click on more button", category: "Category 5" },
-]);
+const items = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3001/items');
+    items.value = response.data;
+  } catch (err) {
+    console.error("Error fetching jobs!", err.message);
+  }
+});
 </script>
 
 <template>

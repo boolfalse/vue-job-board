@@ -25,6 +25,12 @@ npm run dev
 npm run build
 ```
 
+#### Run the Development Server
+
+```sh
+npm run server
+```
+
 #### Project Resources:
 
 - YouTube video: [Vue.js Crash Course 2024](https://www.youtube.com/watch?v=VeNfHj6MhgA)
@@ -38,6 +44,7 @@ npm run build
 - [Install Tailwind CSS with Vite](https://tailwindcss.com/docs/guides/vite)
 - [Tailwind CSS](https://v2.tailwindcss.com/docs/guides/vue-3-vite) with Vue 3 and Vite
 - PrimeVue icons from [PrimeIcons](https://github.com/primefaces/primeicons?tab=readme-ov-file)
+- [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
 
 
 #### Author:
