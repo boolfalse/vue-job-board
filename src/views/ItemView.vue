@@ -3,20 +3,30 @@
 import axios from 'axios';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { reactive, onMounted } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute, RouterLink, useRouter } from 'vue-router';
 import BackButton from "@/components/BackButton.vue";
 
 const route = useRoute();
+const router = useRouter();
 
 const itemId = route.params.id;
 
 const state = reactive({
-  item: {},
+  item: null,
   isLoading: true,
 });
 
 const deleteItem = async () => {
-  alert("Delete item logic goes here!");
+  try {
+    const confirm = window.confirm("Are you sure you want to delete this item?");
+    if (confirm) {
+      await axios.delete(`http://localhost:3001/items/${itemId}`);
+      console.log('Item deleted successfully.');
+      router.push('/items');
+    }
+  } catch (err) {
+    console.error('Error deleting item', err.message);
+  }
 };
 
 onMounted(async () => {
@@ -36,7 +46,7 @@ onMounted(async () => {
   <div v-if="state.isLoading" class="text-center text-gray-500 py-6">
     <PulseLoader />
   </div>
-  <section v-else class="bg-green-50">
+  <section v-else-if="state.item" class="bg-green-50">
     <div class="container m-auto py-10 px-6">
       <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
         <main>
@@ -81,4 +91,7 @@ onMounted(async () => {
       </div>
     </div>
   </section>
+  <div v-else class="text-center text-gray-500 py-6">
+    <p>Item not found!</p>
+  </div>
 </template>

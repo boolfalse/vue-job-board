@@ -33,8 +33,8 @@ const handleSubmit = async () => {
     const response = await axios.post('http://localhost:3001/items', newItem);
     console.log("Item added successfully.");
     router.push(`/items/${response.data.id}`);
-  } catch (error) {
-    console.error("Error fetching item!", error);
+  } catch (err) {
+    console.error("Error fetching item!", err.message);
   }
 };
 </script>
