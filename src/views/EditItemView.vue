@@ -1,8 +1,12 @@
 
 <script setup>
 import router from '@/router';
-import { reactive } from 'vue';
+import {onMounted, reactive} from 'vue';
 import axios from 'axios';
+import {useRoute} from "vue-router";
+
+const route = useRoute();
+const itemId = route.params.id;
 
 const form = reactive({
   category: '',
@@ -14,6 +18,11 @@ const form = reactive({
     email: '',
     phone: '',
   },
+});
+
+const state = reactive({
+  item: null,
+  isLoading: true,
 });
 
 const handleSubmit = async () => {
@@ -30,13 +39,32 @@ const handleSubmit = async () => {
   };
 
   try {
-    const response = await axios.post('http://localhost:3001/items', newItem);
-    console.log("Item added successfully.");
+    const response = await axios.put(`http://localhost:3001/items/${itemId}`, newItem);
+    console.log("Item updated successfully.");
     await router.push(`/items/${response.data.id}`);
   } catch (err) {
     console.error("Error fetching item!", err.message);
   }
 };
+
+onMounted(async () => {
+  try {
+    const response = await axios.get(`http://localhost:3001/items/${itemId}`);
+    state.item = response.data;
+    // Populate inputs
+    form.category = state.item.category;
+    form.title = state.item.title;
+    form.description = state.item.description;
+    form.producer.name = state.item.producer.name;
+    form.producer.description = state.item.producer.description;
+    form.producer.email = state.item.producer.email;
+    form.producer.phone = state.item.producer.phone;
+  } catch (err) {
+    console.error("Error fetching item!", err.message);
+  } finally {
+    state.isLoading = false;
+  }
+});
 </script>
 
 <template>
@@ -44,7 +72,7 @@ const handleSubmit = async () => {
     <div class="container m-auto max-w-2xl py-24">
       <div class="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
         <form @submit.prevent="handleSubmit">
-          <h2 class="text-3xl text-center font-semibold mb-6">Add Item</h2>
+          <h2 class="text-3xl text-center font-semibold mb-6">Update Item</h2>
 
           <div class="mb-4">
             <label for="type" class="block text-gray-700 font-bold mb-2">Item Category</label>
@@ -129,7 +157,7 @@ const handleSubmit = async () => {
 
           <div>
             <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline">
-              Add Item
+              Update Item
             </button>
           </div>
         </form>

@@ -22,7 +22,7 @@ const deleteItem = async () => {
     if (confirm) {
       await axios.delete(`http://localhost:3001/items/${itemId}`);
       console.log('Item deleted successfully.');
-      router.push('/items');
+      await router.push('/items');
     }
   } catch (err) {
     console.error('Error deleting item', err.message);
