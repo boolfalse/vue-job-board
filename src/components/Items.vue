@@ -28,6 +28,7 @@ onMounted(async () => {
   } catch (err) {
     toast.error(err.message); // Error fetching items!
   } finally {
+    state.items = [];
     state.isLoading = false;
   }
 });
