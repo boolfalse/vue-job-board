@@ -1,7 +1,7 @@
 
 ## Vue.js Job Board
 
-- A simple job board application built with Vue.js based on the YouTube video ["Vue.js Crash Course 2024"](https://www.youtube.com/watch?v=VeNfHj6MhgA) by Brad Traversy.
+A simple job board application built with Vue.js based on the YouTube video ["Vue.js Crash Course 2024"](https://www.youtube.com/watch?v=VeNfHj6MhgA) by Brad Traversy.
 
 
 #### Project Setup
