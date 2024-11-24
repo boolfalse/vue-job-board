@@ -30,7 +30,7 @@ const handleSubmit = async () => {
   };
 
   try {
-    const response = await axios.post('http://localhost:3001/items', newItem);
+    const response = await axios.post('/api/items', newItem);
     console.log("Item added successfully.");
     await router.push(`/items/${response.data.id}`);
   } catch (err) {

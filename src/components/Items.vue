@@ -20,7 +20,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3001/items');
+    const response = await axios.get('/api/items');
     state.items = response.data;
   } catch (err) {
     console.error("Error fetching items!", err.message);

@@ -39,7 +39,7 @@ const handleSubmit = async () => {
   };
 
   try {
-    const response = await axios.put(`http://localhost:3001/items/${itemId}`, newItem);
+    const response = await axios.put(`/api/items/${itemId}`, newItem);
     console.log("Item updated successfully.");
     await router.push(`/items/${response.data.id}`);
   } catch (err) {
@@ -49,7 +49,7 @@ const handleSubmit = async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:3001/items/${itemId}`);
+    const response = await axios.get(`/api/items/${itemId}`);
     state.item = response.data;
     // Populate inputs
     form.category = state.item.category;

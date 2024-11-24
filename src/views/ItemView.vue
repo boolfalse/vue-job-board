@@ -20,7 +20,7 @@ const deleteItem = async () => {
   try {
     const confirm = window.confirm("Are you sure you want to delete this item?");
     if (confirm) {
-      await axios.delete(`http://localhost:3001/items/${itemId}`);
+      await axios.delete(`/api/items/${itemId}`);
       console.log('Item deleted successfully.');
       await router.push('/items');
     }
@@ -31,7 +31,7 @@ const deleteItem = async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:3001/items/${itemId}`);
+    const response = await axios.get(`/api/items/${itemId}`);
     state.item = response.data;
   } catch (err) {
     console.error("Error fetching item!", err.message);
