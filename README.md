@@ -3,6 +3,8 @@
 
 A simple job board application built with Vue.js based on the YouTube video ["Vue.js Crash Course 2024"](https://www.youtube.com/watch?v=VeNfHj6MhgA) by Brad Traversy.
 
+<img src="https://i.imgur.com/0GRMcDi.gif" style="width: 100%;">
+
 
 #### Project Setup
 

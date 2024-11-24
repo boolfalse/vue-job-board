@@ -26,9 +26,9 @@ onMounted(async () => {
     const response = await axios.get('/api/items');
     state.items = response.data;
   } catch (err) {
+    state.items = [];
     toast.error(err.message); // Error fetching items!
   } finally {
-    state.items = [];
     state.isLoading = false;
   }
 });
