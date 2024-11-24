@@ -2,7 +2,7 @@
 <script setup>
 import Item from './Item.vue';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
-import {defineProps, onMounted, reactive} from 'vue';
+import { onMounted, reactive } from 'vue';
 import axios from "axios";
 import { useToast } from "vue-toastification";
 
