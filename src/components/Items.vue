@@ -1,7 +1,8 @@
 
 <script setup>
 import Item from './Item.vue';
-import {defineProps, onMounted, ref} from 'vue';
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import {defineProps, onMounted, reactive} from 'vue';
 import axios from "axios";
 
 defineProps({
@@ -12,14 +13,19 @@ defineProps({
   },
 });
 
-const items = ref([]);
+const state = reactive({
+  items: [],
+  isLoading: true,
+});
 
 onMounted(async () => {
   try {
     const response = await axios.get('http://localhost:3001/items');
-    items.value = response.data;
+    state.items = response.data;
   } catch (err) {
-    console.error("Error fetching jobs!", err.message);
+    console.error("Error fetching items!", err.message);
+  } finally {
+    state.isLoading = false;
   }
 });
 </script>
@@ -30,8 +36,11 @@ onMounted(async () => {
       <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">
         Browse Items
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Item v-for="item in items.slice(0, limit || items.length)" :key="item.id" :item="item" />
+      <div v-if="state.isLoading" class="text-center text-gray-500 py-6">
+        <PulseLoader />
+      </div>
+      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Item v-for="item in state.items.slice(0, limit || state.items.length)" :key="item.id" :item="item" />
       </div>
     </div>
   </section>
