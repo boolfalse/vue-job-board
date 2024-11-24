@@ -3,6 +3,9 @@
 import router from '@/router';
 import { reactive } from 'vue';
 import axios from 'axios';
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
 
 const form = reactive({
   category: '',
@@ -31,10 +34,10 @@ const handleSubmit = async () => {
 
   try {
     const response = await axios.post('/api/items', newItem);
-    console.log("Item added successfully.");
+    toast.success("Item added successfully.");
     await router.push(`/items/${response.data.id}`);
   } catch (err) {
-    console.error("Error fetching item!", err.message);
+    toast.error(err.message); // Error fetching item!
   }
 };
 </script>

@@ -4,6 +4,9 @@ import Item from './Item.vue';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import {defineProps, onMounted, reactive} from 'vue';
 import axios from "axios";
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
 
 defineProps({
   limit: Number,
@@ -23,7 +26,7 @@ onMounted(async () => {
     const response = await axios.get('/api/items');
     state.items = response.data;
   } catch (err) {
-    console.error("Error fetching items!", err.message);
+    toast.error(err.message); // Error fetching items!
   } finally {
     state.isLoading = false;
   }

@@ -1,10 +1,12 @@
 
 <script setup>
 import router from '@/router';
-import {onMounted, reactive} from 'vue';
+import { onMounted, reactive } from 'vue';
 import axios from 'axios';
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
+import { useToast } from "vue-toastification";
 
+const toast = useToast();
 const route = useRoute();
 const itemId = route.params.id;
 
@@ -40,10 +42,10 @@ const handleSubmit = async () => {
 
   try {
     const response = await axios.put(`/api/items/${itemId}`, newItem);
-    console.log("Item updated successfully.");
+    toast.success("Item updated successfully.");
     await router.push(`/items/${response.data.id}`);
   } catch (err) {
-    console.error("Error fetching item!", err.message);
+    toast.error(err.message); // Error fetching item!
   }
 };
 
@@ -60,7 +62,7 @@ onMounted(async () => {
     form.producer.email = state.item.producer.email;
     form.producer.phone = state.item.producer.phone;
   } catch (err) {
-    console.error("Error fetching item!", err.message);
+    toast.error(err.message); // Error fetching item!
   } finally {
     state.isLoading = false;
   }

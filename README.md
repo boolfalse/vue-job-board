@@ -45,6 +45,7 @@ npm run server
 - [Tailwind CSS](https://v2.tailwindcss.com/docs/guides/vue-3-vite) with Vue 3 and Vite
 - PrimeVue icons from [PrimeIcons](https://github.com/primefaces/primeicons?tab=readme-ov-file)
 - [{JSON} Placeholder](https://jsonplaceholder.typicode.com/)
+- [Vue Toastification](https://vue-toastification.maronato.dev/)
 
 
 #### Author:

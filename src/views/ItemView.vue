@@ -5,7 +5,9 @@ import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import { reactive, onMounted } from 'vue';
 import { useRoute, RouterLink, useRouter } from 'vue-router';
 import BackButton from "@/components/BackButton.vue";
+import { useToast } from "vue-toastification";
 
+const toast = useToast();
 const route = useRoute();
 const router = useRouter();
 
@@ -21,11 +23,11 @@ const deleteItem = async () => {
     const confirm = window.confirm("Are you sure you want to delete this item?");
     if (confirm) {
       await axios.delete(`/api/items/${itemId}`);
-      console.log('Item deleted successfully.');
+      toast.success('Item deleted successfully.');
       await router.push('/items');
     }
   } catch (err) {
-    console.error('Error deleting item', err.message);
+    toast.error(err.message); // Error deleting item!
   }
 };
 
@@ -34,7 +36,7 @@ onMounted(async () => {
     const response = await axios.get(`/api/items/${itemId}`);
     state.item = response.data;
   } catch (err) {
-    console.error("Error fetching item!", err.message);
+    toast.error(err.message); // Error fetching item!
   } finally {
     state.isLoading = false;
   }
